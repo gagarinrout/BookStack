@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "175386625669",
+    "project_id": "book-stack-78632",
+    "storage_bucket": "book-stack-78632.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175386625669:android:3f3851abff62453ed74bec",
+        "android_client_info": {
+          "package_name": "com.example.bookstack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175386625669-i3e9ot8319fl282bdvkpnrc0p7bl4jmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0PO0k8tuIk7v99lLOpXSRGfLzCXY-rjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175386625669-i3e9ot8319fl282bdvkpnrc0p7bl4jmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175386625669:android:9e095c930768c646d74bec",
+        "android_client_info": {
+          "package_name": "com.gagarinrout.bookstack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175386625669-i3e9ot8319fl282bdvkpnrc0p7bl4jmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0PO0k8tuIk7v99lLOpXSRGfLzCXY-rjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175386625669-i3e9ot8319fl282bdvkpnrc0p7bl4jmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
