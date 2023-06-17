@@ -13,9 +13,9 @@ android {
         applicationId "com.gagarinrout.bookstack"
         minSdk 26
         targetSdk 33
+        compileSdkVersion = 33
         versionCode 1
         versionName "1.0"
-        compileSdkPreview = "UpsideDownCake"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
