@@ -1,6 +1,7 @@
 package com.gagarinrout.bookstack
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,6 +69,14 @@ class AdapterCategory :Adapter<AdapterCategory.HolderCategory>, Filterable{
                     a.dismiss()
                 }
                 .show()
+        }
+
+        //handle click, start pdf list admin activity, also pass pdf id, title
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, PdfListAdminActivity::class.java)
+            intent.putExtra("categoryId", id)
+            intent.putExtra("category", category)
+            context.startActivity(intent)
         }
     }
 

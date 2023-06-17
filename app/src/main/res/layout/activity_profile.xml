@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back01"
+    tools:context=".ProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/shape_toolbar02">
+
+        <!--Profile Icon-->
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/profile_icon_black"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"/>
+
+        <!--Back Button-->
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_white"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:layout_margin="10dp"/>
+
+        <!--Name-->
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:layout_below="@id/profileIcon"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20sp"/>
+
+        <!--Email-->
+        <TextView
+            android:id="@+id/emailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email id"
+            android:layout_below="@id/nameTv"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed-light"
+            android:textSize="16sp"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/detailsLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/toolbarRl"
+        android:layout_marginTop="8dp">
+
+        <!--Account-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/accountTypeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+        <!--Member Since-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Member Since"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/memberDateTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dd/mm/yyyy"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+
+
+        <!--Favorite Books-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorite Books"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/favoriteBooksCountTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="42"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!--Account-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account Status"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/accountstatusTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not Verified"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--View to Separate-->
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/detailsLl"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"/>
+
+    <!--TextView Label-->
+    <TextView
+        android:id="@+id/favoritesLabelTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favorite Books"
+        android:layout_below="@id/view1"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        android:textSize="19sp"/>
+
+    <!--Recycle View to show fav books-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/favoritesLabelTv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_pdf_favorite"/>
+
+</RelativeLayout>

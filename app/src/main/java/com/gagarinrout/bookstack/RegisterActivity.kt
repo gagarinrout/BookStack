@@ -120,7 +120,7 @@ class RegisterActivity : AppCompatActivity() {
         hashMap["uid"] = uid
         hashMap["email"] = email
         hashMap["name"] = name
-        hashMap["profileImage"] = "" //add empty, will be done while editing profile
+        hashMap["timestamp"] = timestamp
         hashMap["userType"] = "user" //can be user and admin, admin will be authorised manually from firebase db
 
         //adding data on db

@@ -9,10 +9,12 @@
 
     <!--toolbar-->
     <RelativeLayout
-        android:id="@+id/toolbarRL"
+        android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/shape_toolbar01">
+
+        <!--Logo Icon-->
         <ImageView
             android:id="@+id/iconIv"
             android:layout_width="110dp"
@@ -29,7 +31,7 @@
             android:layout_marginTop="10dp"
             android:text="Please Login!"
             android:textColor="@color/charcoal"
-            android:fontFamily="@font/opensans_semibold"
+            android:fontFamily="sans-serif-condensed"
             android:textSize="25sp"/>
 </RelativeLayout>
 

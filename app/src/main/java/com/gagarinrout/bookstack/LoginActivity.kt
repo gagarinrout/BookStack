@@ -53,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
              */
             validateData()
         }
+
+        binding.forgotPasswordTv.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        }
     }
 
     private var email = ""
@@ -101,10 +105,10 @@ class LoginActivity : AppCompatActivity() {
         */
         progressDialog.setMessage("Checking user...")
 
-        val firebaseuser = firebaseAuth.currentUser!!
+        val firebaseUser = firebaseAuth.currentUser!!
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(firebaseuser.uid)
+        ref.child(firebaseUser.uid)
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     progressDialog.dismiss()

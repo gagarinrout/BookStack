@@ -31,9 +31,6 @@ class PdfAddActivity : AppCompatActivity() {
     //arraylist to hold pdf categories
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
 
-    //uri of picked pdf
-
-    private var pdfUri: Uri? = null
 
     //TAG
     private val TAG = "PDF_ADD_TAG"
@@ -52,19 +49,13 @@ class PdfAddActivity : AppCompatActivity() {
         progressDialog.setTitle("Please wait...")
         progressDialog.setCanceledOnTouchOutside(false)
 
-        //handle click, go back
-        binding
 
         //handle click, show categories pick dialog
         binding.categoryTv.setOnClickListener {
             categoryPickDialog()
         }
 
-        //handle click, pick pdf intent
-        binding.attachPdfBtn.setOnClickListener {
-            pdfPickIntent()
-        }
-
+        //handle click, back button to go back
         binding.backBtn.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
@@ -72,8 +63,6 @@ class PdfAddActivity : AppCompatActivity() {
         //handle click, start uploading pdf/book
         binding.submitBtn.setOnClickListener {
             // 1) Validate Data
-            // 2) Upload pdf to firebase storage
-            // 3) Get url of uploaded pdf
             // 4) Upload pdf info to firebase db
 
             validateData()
@@ -84,6 +73,7 @@ class PdfAddActivity : AppCompatActivity() {
     private var title = ""
     private var description = ""
     private var category = ""
+    private var link = ""
 
     private fun validateData() {
         // 1) Validate Data
@@ -93,6 +83,11 @@ class PdfAddActivity : AppCompatActivity() {
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
         category = binding.categoryTv.text.toString().trim()
+        link = binding.linkEt.text.toString().trim()
+
+        //pdf info
+        val timestamp = System.currentTimeMillis()
+        val uploadedPdfUrl = binding.linkEt.text.toString().trim()
 
         //validate data
         if (title.isEmpty()){
@@ -104,13 +99,50 @@ class PdfAddActivity : AppCompatActivity() {
         else if (category.isEmpty()){
             Toast.makeText(this, "Pick Category !", Toast.LENGTH_SHORT).show()
         }
-        else if (pdfUri == null){
+        else if (link.isEmpty()){
             Toast.makeText(this, "Pick PDF !", Toast.LENGTH_SHORT).show()
         }
         else{
-            //data validated, begin upload
-            //TODO : upload pdf to storage, get url, upload pdf info to DB
+            //data validated, upload info to db
+            uploadPdfInfoToDb(uploadedPdfUrl, timestamp)
         }
+    }
+
+    private fun uploadPdfInfoToDb(uploadedPdfUrl: String, timestamp: Long) {
+        //upload pdf info to firebase database
+        Log.d(TAG, "uploadPdfInfoToDb: Uploading to db")
+        progressDialog.setMessage("Uploading PDF info...")
+
+        //uid of current user
+        val uid = firebaseAuth.uid
+
+        //setup data to upload to db
+        val hashMap: HashMap<String, Any> = HashMap()
+        hashMap["uid"] = "$uid"
+        hashMap["id"] = "$timestamp"
+        hashMap["title"] = "$title"
+        hashMap["description"] = "$description"
+        hashMap["categoryId"] = "$selectedCategoryId"
+        hashMap["url"] = "$uploadedPdfUrl"
+        hashMap["timestamp"] = timestamp
+        hashMap["viewsCount"] = 0
+        hashMap["downloadsCount"] = 0
+
+        //db reference DB > Books > BookId > (Book Info)
+        val ref = FirebaseDatabase.getInstance().getReference("Books")
+        ref.child("$timestamp")
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                Log.d(TAG, "uploadPdfInfoToDb: Uploaded to db")
+                progressDialog.dismiss()
+                Toast.makeText(this, "Uploaded Successfully :)", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e->
+                Log.d(TAG, "uploadPdfInfoToDb: Failed to upload due to ${e.message}")
+                progressDialog.dismiss()
+                Toast.makeText(this, "Failed to upload due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
 
@@ -170,28 +202,4 @@ class PdfAddActivity : AppCompatActivity() {
             }
             .show()
     }
-
-    private fun pdfPickIntent(){
-        Log.d(TAG, "pdfPickIntent: starting pdf pick intent")
-
-        val intent = Intent()
-        intent.type = "application/pdf"
-        intent.action = Intent.ACTION_GET_CONTENT
-        pdfActivityResultLauncher.launch(intent)
-    }
-
-    val pdfActivityResultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult(),
-        ActivityResultCallback<ActivityResult>{ result ->
-            if (result.resultCode == RESULT_OK ) {
-                Log.d(TAG, "PDF Picked ")
-                pdfUri = result.data!!.data
-            }
-            else{
-                Log.d(TAG, "PDF Pick Cancelled ")
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
-            }
-        }
-    )
-
 }

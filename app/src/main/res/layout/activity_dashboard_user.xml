@@ -14,17 +14,27 @@
         android:layout_height="?actionBarSize"
         android:background="@drawable/shape_toolbar02"
         android:backgroundTint="@color/orange_skin">
+
+        <!--Profile Button-->
+        <ImageButton
+            android:id="@+id/profileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person_white"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"/>
         
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
             android:text="User Dashboard"
-            android:fontFamily="@font/opensans_semibold"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/subTitleTv"
@@ -33,8 +43,9 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/titleTv"
             android:text="user@example.com"
-            android:textColor="@color/black"
-            android:textSize="12sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
         <ImageButton
             android:id="@+id/logoutBtn"
@@ -47,5 +58,26 @@
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
+
+    <!--Tabs: Show Book Categories-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_margin="5dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="8dp"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabIndicatorColor="@color/orange_skin"
+        android:layout_below="@id/toolbarRl"
+        app:tabMode="scrollable"/>
+
+    <!--View Pager: Show Categorised books in fragment-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tabLayout"/>
 
 </RelativeLayout>

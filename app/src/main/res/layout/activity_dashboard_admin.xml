@@ -15,16 +15,26 @@
         android:background="@drawable/shape_toolbar02"
         android:backgroundTint="@color/orange_skin">
 
+        <!--Profile Button-->
+        <ImageButton
+            android:id="@+id/profileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person_white"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
             android:text="Admin Dashboard"
-            android:fontFamily="@font/opensans_semibold"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/subTitleTv"
@@ -33,8 +43,9 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/titleTv"
             android:text="admin@example.com"
-            android:textColor="@color/black"
-            android:textSize="12sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
         <ImageButton
             android:id="@+id/logoutBtn"

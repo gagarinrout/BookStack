@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener
 
         Handler(Looper.getMainLooper()).postDelayed({
             checkUser()
-        }, 1000) //means 1 seconds delay
+        }, 200) //means 1 seconds delay
 
     }
 
