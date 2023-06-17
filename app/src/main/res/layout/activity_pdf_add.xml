@@ -8,7 +8,7 @@
 
     <!--Toolbar-->
     <RelativeLayout
-        android:id="@+id/toolbarRL"
+        android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:background="@drawable/shape_toolbar01">
@@ -110,6 +110,33 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/linkTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@id/descriptionTil"
+        android:layout_marginTop="10dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/linkEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_edittext01"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:hint="Paste Book Google Drive Link"
+            android:textColorHint="@color/gray"
+            android:drawablePadding="10dp"
+            android:inputType="textUri"
+            android:drawableStart="@drawable/ic_link_gray"
+            android:textSize="18sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
     <!-- Pick Category from dialog-->
@@ -117,12 +144,13 @@
         android:id="@+id/categoryTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionTil"
+        android:layout_below="@id/linkTil"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
         android:padding="10dp"
+        android:background="@drawable/shape_edittext01"
         android:drawableStart="@drawable/ic_category_gray"
         android:drawableEnd="@drawable/ic_down_gray"
         android:gravity="center_vertical"
@@ -130,6 +158,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="18sp"/>
+
 
 
     <!--Button to upload pdf-->
