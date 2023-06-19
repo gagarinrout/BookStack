@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import com.github.barteksc.pdfviewer.PDFView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
